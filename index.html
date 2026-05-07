@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA Studio -- We Make the Impossible Visible</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;700;900&family=Space+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{ --void:#04020a; --text:#f0eaff; --purple:#7c3aed; --violet:#9f5ffa; --pink:#f059a4; --cyan:#00e5ff; --yellow:#ffe600;}
+html{scroll-behavior:smooth;}
+body{font-family:'Unbounded',sans-serif;background:var(--void);color:var(--text);overflow-x:hidden;cursor:none;}
+
+#cursor{width:12px;height:12px;background:var(--cyan);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;}
+#particles-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.8;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;mix-blend-mode:difference;}
+.nav-logo{font-weight:900;font-size:1.1rem;letter-spacing:.05em;color:white;}
+.nav-linksdisplay:flex;gap:2.5rem;list-style:none;}
+nav ul a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:.78rem;font-weight:300;}
+.nav-btn{background:linear-gradient(135deg,var(--purple),var(--pink));color:white;padding:.55rem 1.3rem;font-size:.75rem;font-weight:700;border:none;cursor:pointer;font-family:'Unbounded';border-radius:4px;}
+
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;overflow:hidden;padding:0 1rem;}
+.hero-inner{text-align:center;}
+
+
+.kinetic-title{font-size:clamp(4rem,12vw,10rem);font-weight:900;line-height:.9;letter-spacing:-.02em;overflow:hidden;}
+.kt-line{display:block;overflow:hidden;}
+.kt-inner{display:block;padding:.05em 0;}
+.c1{color:var(--text);animation:slideUp 1s .2s cubic-bezier(0.4,0,0.2,1) both;}
+.c2{color:transparent;-webkit-text-stroke:2px var(--violet);animation:slideUp 1s .4s cubic-bezier(0.4,0,0.2,1) both;}
+.c3{background:linear-gradient(90deg,var(--cyan),var(--pink),var(--yellow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:slideUp 1s .6s cubic-bezier(0.4,0,0.2,1) both;}
+@keyframes slideUp{from{transform:translateY(110%);}to{transform:translateY(0);}}
+.hero-sub{font-family:'Space Mono',monospace;font-size:.75rem;color:rgba(159,113,250,0.6);letter-spacing:.1em;margin-top:2rem;animation:fadeIn 1s 1s both;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.cta-group{display:flex;gap:1rem;justify-content:center;margin-top:3rem;animation:fadeIn 1s 1.2s both;}
+.btn-electric{background:linear-gradient(135deg,var(--purple),var(--pink));color:white;padding:1rem 2rem;font-size:.8rem;font-weight:700;letter-spacing:.05em;border:none;cursor:pointer;font-family:'Unbounded';border-radius:4px;transition:transform .2s;}
+.btn-electric:hover{transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.15);padding:1rem 2rem;font-size:.8rem;font-weight:300;cursor:pointer;font-family:'Unbounded';border-radius:4px;}
+
+.marquee-wrap{overflow:hidden;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);padding:.8rem 0;position:relative;z-index:1;}
+.marquee-track{display:inline-flex;gap:4rem;animation:ticker 20s linear infinite;white-space:nowrap;font-family:'Space Mono';font-size:.7rem;color:rgba(255,255,255,0.4);}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+
+.work-section{padding:8rem 3rem;position:relative;z-index:1;}
+.work-inner{max-width:1200px;margin:0 auto;}
+.sec-label{font-family:'Space Mono';font-size:.72rem;color:var(--violet);letter-spacing:.1em;margin-bottom:.8rem;}
+.sec-title{font-size:clamp(2.5rem,5vw,4rem);font-weight:900;margin-bottom:3rem;}
+.work-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);}
+.work-card{padding:2.5rem;background:var(--void);position:relative;overflow:hidden;transition:background .4s;}
+.work-card:hover{background:rgba(124,58,237,0.05);}
+.work-card.largegrid-row:span 2;}
+.work-cat{font-family:'Space Mono';font-size:.62rem;color:var(--violet);letter-spacing:.1em;margin-bottom:.5rem;}
+.work-title{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;}
+.work-desc{font-size:.78rem;color:rgba(240,234,255,0.5);line-height:1.6;margin-bottom:1rem;}
+.w-tag{display:inline-block;font-family:'Space Mono';font-size:.55rem;padding:.25rem .6rem;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);margin-right:.4rem;}
+
+.cta-section{padding:10rem 3rem;text-align:center;position:relative;z-index:1;}
+.cta-head{font-size:clamp(3rem,8vw,6rem);font-weight:900;line-height:.95;letter-spacing:-.03em;margin-bottom:2rem;}
+.cta-head em{font-style:normal;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.2);}
+.cta-email{font-family:'Space Mono';font-size:clamp(1rem,2vw,1.4rem);color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.25);padding-bottom:.3rem;display:inline-block;margin-top:2.5rem;}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+footer{background:var(--void);border-top:1px solid rgba(255,255,255,0.06);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;}
+@media(max-width:900px){.work-grid{grid-template-columns:1fr;}nav ul{display:none;}}
+</style></head>
+<body>
+<div id="cursor"></div>
+<canvas id="particles-bg"></canvas>
+<nav><div class="nav-logo">NOVA.</div><ul class="nav-links"><li><a href="#">Work</a></li><li><a href="#">Studio</a></li><li><a href="#">Services</a></li></ul><button class="nav-btn">Start a Project</button></nav>
+<section class="hero"><div class="hero-inner"><div class="kinetic-title"><span class="kt-line"><span class="kt-inner c1">WE MAKE</span></span><span class="kt-line"><span class="kt-inner c2">THE IMPOSSIBLE
